@@ -99,7 +99,7 @@ var svg = d3.select("#dataviz2")
 
 //d3.csv(wave4)
 //Read the data
-d3.json("data/jdata.json", function(data) {
+d3.json("jdata.json", function(data) {
 //d3.csv("data/wave1.csv", function(data) {
 console.log(allVar[4])
 console.log(allVar.indexOf("family"))
@@ -319,7 +319,7 @@ else{
 
 
 function updateXaxis(newX) {
-  d3.json("data/jdata.json", function(data){
+  d3.json("jdata.json", function(data){
     console.log(currentWave);
     console.log(currentX);
     currentX = newX;
@@ -342,7 +342,7 @@ function updateXaxis(newX) {
 })}
 
 function updateYaxis(newY) {
-  d3.json("data/jdata.json", function(data){
+  d3.json("jdata.json", function(data){
     console.log(currentWave);
     console.log(currentY);
     currentY = newY;
@@ -366,7 +366,7 @@ function updateYaxis(newY) {
 
 
 function switchWave(wave) {
-  d3.json("data/jdata.json", function(data) {
+  d3.json("jdata.json", function(data) {
     console.log(wave);
     console.log(currentY);
     console.log(currentX);
