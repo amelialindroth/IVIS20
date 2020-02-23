@@ -1,0 +1,22 @@
+
+
+body {
+    height: 100%;
+    /* background-color: #e4e4e7; */
+}
+
+.bottomdiv {
+    /*border: 1px solid red;
+    height: 50px;
+    width: 50px; */
+    position:absolute; 
+    right:0;
+    top:0;
+}
+
+.bubbles {
+  stroke-width: 2px;
+  stroke: white;
+}
+.bubbles:hover {
+  stroke: black;

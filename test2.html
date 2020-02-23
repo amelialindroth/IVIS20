@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+
+<head>
+<title>Visualizing the World Through its Own Worldview</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<!-- Load color scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#">Visualizing the World Through its Own Worldview</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"> <!-- This also changes between the pages -->
+                <a class="nav-link" href="test1.html">VIZ</a> <!-- "https://gits-15.sys.kth.se/pages/ameliah/IVIS20/" -->
+            </li>
+            <li class="nav-item"> <!-- This also changes between the pages -->
+                <a class="nav-link" href="discovery.html">Discovery Process</a> <!-- "https://gits-15.sys.kth.se/pages/ameliah/IVIS20/discovery.html" -->
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>
+
+
+<body>
+    <div class="container-fluid bg">
+        <!--<div class="app p-4 "> -->
+            <!-- <div class="row justify-content-center mb-3">-->
+            <div class="row">
+                <div class="col-3"> <!-- dropdownMenu1 should maybe be dropdownMenuY -->
+                      <button
+                        class="btn dropdown-toggle dropdown-title ml-5 btn-light btn-style"
+                        type="button"
+                        id="dropdownMenuY" 
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        Y-axis
+                    </button>
+                    <!--Menu-->
+                    <div class="dropdown-menu dropdown-primary">
+                        <a class="dropdown-item" onclick="updateYaxis('work')"
+                            >Work is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('family')"
+                            >Family is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('religion')"
+                            >Religion is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('politics')"
+                            >Politics is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('leisure')"
+                            >Leisure time is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('friends')"
+                            >Friends are important</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('health')"
+                            >State of health</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('happiness')"
+                            >Happiness</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('confidence')"
+                            >Confidence in the government</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('interest')"
+                            >Interest in politics</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('demogood')"
+                            >Democracy is good</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('leadergood')"
+                            >Having a strong leader is good</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('lifeexpectancy')"
+                            >Life expectancy</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('gdpcapita')"
+                            >GDP per capita</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('medianage')"
+                            >Median age</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('cleanelection')"
+                            >Clean election index</a
+                        >
+                        <!-- <a class="dropdown-item" onclick="updateYaxis('democracyscore')"
+                            >Democracy score</a> -->
+                        <a class="dropdown-item" onclick="updateYaxis('education')"
+                            >Education</a
+                        >
+                        <a class="dropdown-item" onclick="updateYaxis('internetusers')"
+                            >Internet users</a
+                        >
+                    </div>
+                </div>
+
+                    <div class="col-6">
+                    <button
+                        type="button"
+                        onclick="switchWave('wave1')"
+                        id="wave1"
+                        class="btn btn-light btn-style"
+                    >
+                        1995-1999
+                    </button>
+                    <button
+                        onclick="switchWave('wave2')"
+                        id="wave2"
+                        class="btn btn-light btn-style"
+                    >
+                        2000-2004
+                    </button>
+                    <button
+                        onclick="switchWave('wave3')"
+                        id="wave3"
+                        class="btn btn-light btn-style"
+                    >
+                        2005-2009
+                    </button>
+                    <button
+                        onclick="switchWave('wave4')"
+                        id="wave4"
+                        class="btn btn-light btn-style"
+                    >
+                        2010-2014
+                    </button>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <div id="dataviz2"></div>
+                </div>
+                
+            
+            <div class="col-3"> <!-- useed to be row -->
+
+                <div class="mx-auto" alt="" style="margin-top: 500px;">
+                    <!--Dropdown primary-->
+                    <!--Trigger-->
+                    <!-- dropdownMenu1 should maybe be dropdownMenuX -->
+                    <button
+                        class="btn dropdown-toggle dropdown-title ml-5 btn-light btn-style"
+                        type="button"
+                        id="dropdownMenuX"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        X-axis
+                    </button>
+                    <!--Menu-->
+                    <div class="dropdown-menu dropdown-primary">
+                        <a class="dropdown-item" onclick="updateXaxis('work')"
+                            >Work is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('family')"
+                            >Family is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('religion')"
+                            >Religion is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('politics')"
+                            >Politics is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('leisure')"
+                            >Leisure time is important</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('friends')"
+                            >Friends are important</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('health')"
+                            >State of health</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('happiness')"
+                            >Happiness</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('confidence')"
+                            >Confidence in the government</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('interest')"
+                            >Interest in politics</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('demogood')"
+                            >Democracy is good</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('leadergood')"
+                            >Having a strong leader is good</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('lifeexpectancy')"
+                            >Life expectancy</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('gdpcapita')"
+                            >GDP per capita</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('medianage')"
+                            >Median age</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('cleanelection')"
+                            >Clean election index</a
+                        >
+                     <!--    <a class="dropdown-item" onclick="updateXaxis('democracyscore')"
+                            >Democracy score</a> -->
+                        <a class="dropdown-item" onclick="updateXaxis('education')"
+                            >Education</a
+                        >
+                        <a class="dropdown-item" onclick="updateXaxis('internetusers')"
+                            >Internet users</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div> 
+       <!-- </div> -->
+    </div>
+            
+
+
+
+<script src="js2/dataviz2.js"></script>
+
+
+<!-- <div id="my_dataviz"></div>
+<script src="js2/my_dataviz.js"></script> -->
+
+
