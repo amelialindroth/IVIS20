@@ -271,10 +271,18 @@ else{
       .transition()
       .duration(1500)
       .attr("r", function (d) { return 1.5*z(d.population); } ) //bubble size
+      .style("opacity", function(d) {
+        if(d[currentX] == "null" | d[currentY] == "null"){
+          return 0
+        }
+        else{
+          return 1
+        }
+      })
       .style("fill", function (d) { return myColor(d.Continent_Name); } )
       //.style("display", function(d) {return d.cleanelection == "null" ? "none" : "null";})
-      .filter(function(d) { return d[currentX] == "null"; }).remove()
-      .filter(function(d) { return d[currentY] == "null"; }).remove()
+      //.filter(function(d) { return d[currentX] == "null"; }).remove()
+      //.filter(function(d) { return d[currentY] == "null"; }).remove()
 
     // -3- Trigger the functions for hover
     // .on("mouseover", showTooltip )
@@ -499,11 +507,19 @@ else{
       .transition()
       .duration(400)
       .attr("r", function (d) { return 1.5*z(d.population); } ) //bubble size
+      .style("opacity", function(d) {
+        if(d[currentX] == "null" | d[currentY] == "null"){
+          return 0
+        }
+        else{
+          return 1
+        }
+      })
       .style("fill", function (d) { return myColor(d.Continent_Name); } )
       //.style("display", function(d) {return d[currentX] == "null" ? "none" : "null";})
       //.style("display", function(d) {return d[currentY] == "null" ? "none" : "null";})
-      .filter(function(d) { return d[currentX] == "null"; }).remove()
-      .filter(function(d) { return d[currentY] == "null"; }).remove()
+      //.filter(function(d) { return d[currentX] == "null"; }).remove()
+      //.filter(function(d) { return d[currentY] == "null"; }).remove()
 
 };
 
