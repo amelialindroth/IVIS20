@@ -300,7 +300,7 @@ else{
       .data(allgroups)
       .enter()
       .append("circle")
-        .attr("cx", (width+40)) //used to be 390
+        .attr("cx", (width+20)) //used to be 390
         .attr("cy", function(d,i){ return 8 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
         .attr("r", 8)
         .style("fill", function(d){ return myColor(d)})
@@ -314,7 +314,7 @@ else{
       .data(allgroups)
       .enter()
       .append("text")
-        .attr("x", (width+40) + size*.8) // width used to be 390
+        .attr("x", (width+20) + size*.8) // width used to be 390
         .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d){ return myColor(d)})
         .text(function(d){ return d})
